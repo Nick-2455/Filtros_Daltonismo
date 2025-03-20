@@ -47,17 +47,19 @@ image = image.astype(np.float32)
 # Convertir la imagen a escala de grises para aplicar convolución
 gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-# Definir los kernels
+# Definir los kernels mejorados
 laplacian_kernel = np.array([[0, -1, 0],
                               [-1, 4, -1],
                               [0, -1, 0]])
 
-gaussian_kernel = (1/16) * np.array([[1, 2, 1],
-                                     [2, 4, 2],
-                                     [1, 2, 1]])
+gaussian_kernel = (1/256) * np.array([[1, 4, 6, 4, 1],
+                                      [4, 16, 24, 16, 4],
+                                      [6, 24, 36, 24, 6],
+                                      [4, 16, 24, 16, 4],
+                                      [1, 4, 6, 4, 1]])
 
 high_boost_kernel = np.array([[-1, -1, -1],
-                               [-1, 9, -1],
+                               [-1, 10, -1],
                                [-1, -1, -1]])
 
 # Aplicar los filtros
@@ -66,7 +68,7 @@ gaussian_result = apply_convolution(gray_image, gaussian_kernel)
 high_boost_result = apply_convolution(gray_image, high_boost_kernel)
 
 # Normalizar las imágenes resultantes para visualizarlas correctamente
-laplacian_result = np.clip(laplacian_result, 0, 255).astype(np.uint8)
+laplacian_result = cv2.convertScaleAbs(laplacian_result)
 gaussian_result = np.clip(gaussian_result, 0, 255).astype(np.uint8)
 high_boost_result = np.clip(high_boost_result, 0, 255).astype(np.uint8)
 
