@@ -72,10 +72,22 @@ laplacian_result = cv2.convertScaleAbs(laplacian_result)
 gaussian_result = np.clip(gaussian_result, 0, 255).astype(np.uint8)
 high_boost_result = np.clip(high_boost_result, 0, 255).astype(np.uint8)
 
-# Mostrar la imagen original y las filtradas
-cv2.imshow('Imagen Original', image.astype(np.uint8))
-cv2.imshow('Filtro Laplaciano (Bordes)', laplacian_result)
-cv2.imshow('Filtro Gaussiano (Suavizado)', gaussian_result)
-cv2.imshow('Filtro High Boost (Realce)', high_boost_result)
+# Agregar nombres a las imágenes
+labels = ["Original", "Laplaciano (Bordes)", "Gaussiano (Suavizado)", "High Boost (Realce)"]
+
+# Combinar todas las imágenes en una sola ventana
+titles = [image.astype(np.uint8),
+          cv2.cvtColor(laplacian_result, cv2.COLOR_GRAY2BGR),
+          cv2.cvtColor(gaussian_result, cv2.COLOR_GRAY2BGR),
+          cv2.cvtColor(high_boost_result, cv2.COLOR_GRAY2BGR)]
+
+# Definir el tamaño de la fuente, color y posición de los textos
+for i, img in enumerate(titles):
+    cv2.putText(img, labels[i], (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, cv2.LINE_AA)  # Rojo (0, 0, 255)
+
+combined = np.hstack(titles)
+
+# Mostrar la imagen combinada con los nombres de los filtros
+cv2.imshow('Comparación de Filtros', combined)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
