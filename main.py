@@ -33,8 +33,8 @@ def apply_convolution(image, kernel):
     
     return result
 
-# Cargar la imagen en escala de grises
-image = cv2.imread('images/image.jpg', cv2.IMREAD_GRAYSCALE)
+# Cargar la imagen en color
+image = cv2.imread('images/image.jpg', cv2.IMREAD_COLOR)
 
 # Verificar que la imagen se haya cargado correctamente
 if image is None:
@@ -44,19 +44,36 @@ if image is None:
 # Convertir a float32 para precisión en cálculos
 image = image.astype(np.float32)
 
-# Definir un kernel simple (matriz 3x3)
-kernel = np.array([[0, -1, 0],
-                   [-1, 4, -1],
-                   [0, -1, 0]])
+# Convertir la imagen a escala de grises para aplicar convolución
+gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-# Aplicar la convolución
-result = apply_convolution(image, kernel)
+# Definir los kernels
+laplacian_kernel = np.array([[0, -1, 0],
+                              [-1, 4, -1],
+                              [0, -1, 0]])
 
-# Normalizar la imagen resultante para visualizarla correctamente
-result = np.clip(result, 0, 255).astype(np.uint8)
+gaussian_kernel = (1/16) * np.array([[1, 2, 1],
+                                     [2, 4, 2],
+                                     [1, 2, 1]])
 
-# Mostrar la imagen original y la filtrada
+high_boost_kernel = np.array([[-1, -1, -1],
+                               [-1, 9, -1],
+                               [-1, -1, -1]])
+
+# Aplicar los filtros
+laplacian_result = apply_convolution(gray_image, laplacian_kernel)
+gaussian_result = apply_convolution(gray_image, gaussian_kernel)
+high_boost_result = apply_convolution(gray_image, high_boost_kernel)
+
+# Normalizar las imágenes resultantes para visualizarlas correctamente
+laplacian_result = np.clip(laplacian_result, 0, 255).astype(np.uint8)
+gaussian_result = np.clip(gaussian_result, 0, 255).astype(np.uint8)
+high_boost_result = np.clip(high_boost_result, 0, 255).astype(np.uint8)
+
+# Mostrar la imagen original y las filtradas
 cv2.imshow('Imagen Original', image.astype(np.uint8))
-cv2.imshow('Imagen Filtrada', result)
+cv2.imshow('Filtro Laplaciano (Bordes)', laplacian_result)
+cv2.imshow('Filtro Gaussiano (Suavizado)', gaussian_result)
+cv2.imshow('Filtro High Boost (Realce)', high_boost_result)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
