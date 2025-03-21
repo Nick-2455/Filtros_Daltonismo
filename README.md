@@ -1,66 +1,112 @@
-# Filtro de Deuteranopía - Adaptación de Colores para Daltonismo
+# Documentación de Filtros de Daltonismo
 
-## ¿Qué es la Deuteranopía?
-La **deuteranopía** es un tipo de daltonismo en el que las personas tienen dificultad para distinguir entre los colores **rojo y verde**. Esto ocurre debido a la ausencia o mal funcionamiento de los **conos de detección del verde** en la retina del ojo humano. Como resultado, los tonos rojizos y verdosos pueden parecer similares o incluso indistinguibles.
-
-## ¿Cómo funciona el filtro para Deuteranopía?
-Este filtro aplica una transformación matemática a la imagen para **modificar los colores y hacerlos más distinguibles** para las personas con deuteranopía. Se basa en una **matriz de corrección** que ajusta la forma en que los canales de color (Rojo, Verde y Azul) se combinan en la imagen.
-
-### Matriz de transformación utilizada:
-```python
-colorblind_matrix = np.array([[0.43, 0.72, -0.15],
-                               [0.34, 0.57, 0.09],
-                               [-0.02, 0.03, 1.00]])
-```
-
-Esta matriz cambia la forma en que cada píxel de la imagen **mezcla sus componentes de color**. Se aplican cálculos a cada canal **Rojo (R), Verde (G) y Azul (B)** para generar una nueva imagen corregida.
-
-
-## ** ¿Cómo se aplica la transformación de color?**
-Cada píxel de la imagen tiene tres valores: **R (Rojo), G (Verde) y B (Azul)**.  
-Para modificarlo, hacemos una multiplicación **matricial** entre los valores de color del píxel y la matriz de transformación.
-
-Ejemplo de transformación:
-
-| **Antes (RGB original)** | **Después (RGB corregido)** |
-|----------------|----------------|
-| **(255, 50, 50)**  → Rojo intenso | **(200, 100, 50)** → Rojo más equilibrado |
-| **(30, 200, 30)**  → Verde brillante | **(50, 180, 30)** → Más diferenciado del rojo |
-
-
-
-## ** ¿Cómo afecta cada color?**
-
-| **Color Original** | **Color Transformado** | **Motivo del Cambio** |
-|----------------|----------------|----------------|
-| **Rojo intenso** | **Menos brillante, con más verde** | Se ajusta para que no se confunda con el verde. |
-| **Verde brillante** | **Más opaco, menos similar al rojo** | Se diferencia mejor del rojo. |
-| **Azul** | **Casi sin cambios** | No está afectado por la deuteranopía. |
-
-**El resultado final es una imagen en la que los rojos y verdes tienen más contraste entre sí**, haciendo que sean más fáciles de diferenciar.
+Este documento describe el funcionamiento y objetivo de los diferentes filtros aplicados para simular tipos de daltonismo y acromatopsia en una imagen. Estos filtros permiten visualizar cómo las personas con estas condiciones visuales perciben los colores.
 
 ---
 
-## Implementación en Python
-El siguiente código carga una imagen, aplica la transformación de colores y muestra el resultado comparado con la imagen original:
+## 🌐 Propósito General
 
-## ¿Cómo se usa este filtro en la vida real?
-Este filtro es útil en diferentes aplicaciones para mejorar la accesibilidad de personas con daltonismo:
+El objetivo de aplicar estos filtros es generar conciencia sobre la percepción del color en personas con diferentes tipos de daltonismo, y facilitar el diseño de contenido visual más accesible e inclusivo.
 
-### 1️⃣ **Diseño de Interfaces y Aplicaciones**
-- Mejora la visibilidad de colores en **software, aplicaciones y videojuegos**.
-- Ayuda a los diseñadores a crear interfaces más accesibles.
+---
 
-### 2️⃣ **Señalización y Mapas**
-- Puede aplicarse en **mapas de transporte público** para hacer más distinguibles las rutas de trenes o autobuses.
-- En **señalización vial**, para que los semáforos y carteles sean más fáciles de interpretar para daltónicos.
+## 🔹 Filtro de Deuteranopía
 
-### 3️⃣ **Análisis de Imágenes Médicas**
-- En medicina, puede ser útil para permitir que médicos con daltonismo interpreten mejor ciertas imágenes médicas.
+**Nombre:** `apply_deuteranopia_filter`
 
-### 4️⃣ **E-Commerce y Catálogos Digitales**
-- Mejora la experiencia de compra en línea al ajustar los colores de productos para clientes con daltonismo.
+**Tipo de daltonismo:** Rojo-verde
 
-## Conclusión
-Este filtro es una herramienta poderosa para mejorar la accesibilidad visual en diversas industrias. Implementarlo en sistemas de visión por computadora y diseño de interfaces puede **hacer que la información sea más inclusiva para personas con deuteranopía**.
+**Descripción:** Simula la percepción de una persona con deuteranopía, una condición en la que los conos responsables de captar el color verde (conos M) no funcionan correctamente o están ausentes.
+
+**Matriz de transformación:**
+```
+[[0.43, 0.72, -0.15],
+ [0.34, 0.57, 0.09],
+ [-0.02, 0.03, 1.00]]
+```
+
+**Efecto:** Los tonos verdes y rojos se perciben de forma similar, dificultando su distinción.
+
+---
+
+## 🔹 Filtro de Protanopía
+
+**Nombre:** `apply_protanopia_filter`
+
+**Tipo de daltonismo:** Rojo-verde
+
+**Descripción:** Simula la condición en la que los conos sensibles al rojo (conos L) están ausentes o no funcionan bien.
+
+**Matriz de transformación:**
+```
+[[0.152, 1.053, -0.205],
+ [0.115, 0.786, 0.099],
+ [0.000, 0.000, 1.000]]
+```
+
+**Efecto:** El rojo pierde intensidad, se vuelve más apagado o incluso oscuro, y se confunde con verdes o marrones.
+
+---
+
+## 🔹 Filtro de Tritanopía
+
+**Nombre:** `apply_tritanopia_filter`
+
+**Tipo de daltonismo:** Azul-amarillo
+
+**Descripción:** Simula la tritanopía, condición donde los conos sensibles al azul (conos S) no están presentes o no funcionan correctamente.
+
+**Matriz de transformación:**
+```
+[[1.0, 0.0, 0.0],
+ [0.0, 1.0, 0.0],
+ [-0.395, 0.801, 0.0]]
+```
+
+**Efecto:** Las personas con tritanopía tienen dificultad para distinguir entre tonos azules y verdes, o entre amarillos y violetas.
+
+---
+
+## 🔹 Filtro de Acromatopsia
+
+**Nombre:** `apply_acromatopsia_filter`
+
+**Tipo de deficiencia visual:** Pérdida total de percepción del color
+
+**Descripción:** Simula la acromatopsia, una condición muy rara en la que las personas ven exclusivamente en escala de grises debido a la ausencia de conos funcionales.
+
+**Matriz de transformación:**
+```
+[[0.299, 0.587, 0.114],
+ [0.299, 0.587, 0.114],
+ [0.299, 0.587, 0.114]]
+```
+
+**Efecto:** La imagen se convierte a escala de grises, eliminando por completo cualquier información de color.
+
+---
+
+## 🔄 Función genérica: `apply_color_filter`
+
+**Uso:** Todas las funciones anteriores utilizan esta función base para aplicar la matriz de conversión de color.
+
+**Funcionamiento:**
+1. Convierte la imagen de BGR a RGB.
+2. Aplica la transformación matricial con la matriz correspondiente.
+3. Ajusta los valores para que estén en el rango [0, 255].
+
+---
+
+## 📈 Aplicaciones Prácticas
+
+- Diseño gráfico accesible
+- Desarrollo de interfaces y videojuegos
+- Material educativo sobre percepción visual
+- Pruebas de usabilidad en plataformas digitales
+
+---
+
+## 🏁 Conclusión
+
+Simular condiciones de daltonismo y acromatopsia es clave para comprender los retos visuales que enfrentan algunas personas. Usar estos filtros ayuda a crear contenido visual inclusivo, promoviendo la accesibilidad y el diseño universal.
 
