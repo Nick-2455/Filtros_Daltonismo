@@ -4,9 +4,9 @@ import matplotlib.pyplot as plt
 
 # Función para aplicar el filtro de Deuteranopia (dificultad para distinguir verdes)
 def apply_deuteranopia_filter(image):
-    matrix = np.array([[0.43, 0.72, -0.15],
-                       [0.34, 0.57, 0.09],
-                       [-0.02, 0.03, 1.00]])
+    matrix = np.array([[0.42, 0.78, -0.20],
+                       [0.24, 0.71, 0.04],
+                       [-0.01, 0.04, 0.97]])
     return apply_color_filter(image, matrix)
 
 # Función para aplicar el filtro de Protanopia (dificultad para distinguir rojos)
