@@ -50,15 +50,21 @@ protanopia_img = apply_protanopia_filter(image)
 tritanopia_img = apply_tritanopia_filter(image)
 acromatopsia_img = apply_acromatopsia_filter(image)
 
-# Mostrar las imágenes
-fig, axes = plt.subplots(1, 5, figsize=(22, 5))
+# Crear figura 2x3
+fig, axes = plt.subplots(2, 3, figsize=(15, 8))
+axes = axes.flatten()
+
 images = [original_rgb, deuteranopia_img, protanopia_img, tritanopia_img, acromatopsia_img]
 titles = ["Original", "Deuteranopia", "Protanopia", "Tritanopia", "Acromatopsia"]
 
-for ax, img, title in zip(axes, images, titles):
-    ax.imshow(img)
-    ax.set_title(title)
-    ax.axis("off")
+# Mostrar imágenes
+for i in range(6):
+    if i < len(images):
+        axes[i].imshow(images[i])
+        axes[i].set_title(titles[i])
+    else:
+        axes[i].axis("off")  # Si sobra espacio, lo dejamos vacío
+    axes[i].axis("off")
 
 plt.tight_layout()
 plt.show()
