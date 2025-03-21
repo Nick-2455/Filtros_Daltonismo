@@ -11,7 +11,7 @@ def apply_acromatopsia_filter(image):
     
     return corrected_image
 
-image = cv2.imread('fresas.jpg', cv2.IMREAD_COLOR)
+image = cv2.imread('imagenes/fresas.jpeg', cv2.IMREAD_COLOR)
 
 if image is None:
     print("Error: No se pudo cargar la imagen.")
