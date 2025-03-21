@@ -12,10 +12,34 @@ colorblind_matrix = np.array([[0.43, 0.72, -0.15],
                                [0.34, 0.57, 0.09],
                                [-0.02, 0.03, 1.00]])
 ```
-### Explicación de la matriz:
-- **Canal Rojo (R) →** Se reduce su intensidad y se mezcla con el verde.
-- **Canal Verde (G) →** Se ajusta para equilibrar mejor con los otros colores.
-- **Canal Azul (B) →** Se mantiene prácticamente igual, ya que no es afectado por la deuteranopía.
+
+Esta matriz cambia la forma en que cada píxel de la imagen **mezcla sus componentes de color**. Se aplican cálculos a cada canal **Rojo (R), Verde (G) y Azul (B)** para generar una nueva imagen corregida.
+
+
+## ** ¿Cómo se aplica la transformación de color?**
+Cada píxel de la imagen tiene tres valores: **R (Rojo), G (Verde) y B (Azul)**.  
+Para modificarlo, hacemos una multiplicación **matricial** entre los valores de color del píxel y la matriz de transformación.
+
+Ejemplo de transformación:
+
+| **Antes (RGB original)** | **Después (RGB corregido)** |
+|----------------|----------------|
+| **(255, 50, 50)**  → Rojo intenso | **(200, 100, 50)** → Rojo más equilibrado |
+| **(30, 200, 30)**  → Verde brillante | **(50, 180, 30)** → Más diferenciado del rojo |
+
+
+
+## ** ¿Cómo afecta cada color?**
+
+| **Color Original** | **Color Transformado** | **Motivo del Cambio** |
+|----------------|----------------|----------------|
+| **Rojo intenso** | **Menos brillante, con más verde** | Se ajusta para que no se confunda con el verde. |
+| **Verde brillante** | **Más opaco, menos similar al rojo** | Se diferencia mejor del rojo. |
+| **Azul** | **Casi sin cambios** | No está afectado por la deuteranopía. |
+
+**El resultado final es una imagen en la que los rojos y verdes tienen más contraste entre sí**, haciendo que sean más fáciles de diferenciar.
+
+---
 
 ## Implementación en Python
 El siguiente código carga una imagen, aplica la transformación de colores y muestra el resultado comparado con la imagen original:
