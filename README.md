@@ -65,7 +65,7 @@ Cuando ejecute el programa, el script leerá el archivo `image6.jpg.webp`, y le 
 **Acromatopsia**: Conversión de la imagen a escala de grises.
 
 ##### Ejemplo de salida:
-(![HCAP](https://github.com/user-attachments/assets/07111e9d-aa56-4c24-a78d-0d264861fa46)
+![HCAP](https://github.com/user-attachments/assets/07111e9d-aa56-4c24-a78d-0d264861fa46)
 
 
 #### **7. Conclusion**
