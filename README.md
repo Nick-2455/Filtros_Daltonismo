@@ -1,77 +1,3 @@
-### **Manual de usuario**
-
-#### **1. Descripción del programa**
-
-Este programa está diseñado para diferenciar los distintos tipos de daltonismo, esto mediante el utilizamiento de las biblotecas de OpenCV, Numpy y Matplotlib. Los filtros van desde simular la forma en la que ve el Deuteranopia, Protanopia, Tritanopia y Acromatopsia.
-
-#### **2. Lenguaje de programación utilizado**
-
-Este programa está desarrollado en el lenguaje de **Python**.
-
-#### **3. Requisitos previos**
-
-Antes de ejecutar el programa, debe tener instalada la versión de Python 3 en su sistema. Puede descargar e instalar Python desde el siguiente enlace oficial:  
-[Python Oficial](https://www.python.org/downloads/)
-
-Para lograr ejecutar el codigo el usuario debe tener instaladas las biblotecas de OpenCV, Numpy y Matplotlib.
-
-Esto se logra abrien un panel de ternimal y ejecutando los siguientes comandos, en caso de que ya tenga las librerias instaladas en su python omita este paso.
-
-OpenCV
-```bash
-pip install opencv-python
-```
-
-Numpy
-```bash
-pip install numpy
-```
-
-Matplotlib
-```bash
-pip install matplotlib
-```
-
-una vez instalas la librerias, el codigo no deberia de dar un problema con ellas.
-
-#### **4. Archivos necesarios**
-
-- **Archivo de código fuente:** `main.py` (Este es el archivo que contiene el programa en Python).
-- **Archivo de entrada:** El usuario debe de la carpeta `images` donde se encuentra el archivo de  `image6.jpg.webp`, este sera la imagen a la que se le aplicaran los distintos filtros para simular los diferentes tipos de daltonismo.
-
-#### **5. Cómo ejecutar el programa**
-
-Para ejecutar el programa, siga estos pasos:
-
-1. Asegúrese de tener el archivo `image6.jpg.webp` en la carpeta de `images` debido a que el programa los buscara de esta forma.
-2. Asegúrese de que la carpeta `images` este dentro de la carpeta donde se encuetra el archivo `main.py`.
-3. Abra una terminal o línea de comandos en la carpeta donde esta el `main.py`.
-4. Ejecute el siguiente comando para correr el programa:
-
-```bash
-python main.py
-```
-
-#### **6. Qué esperar como salida**
-
-Cuando ejecute el programa, el script leerá el archivo `image6.jpg.webp`, y le aplicara los diferentes kernels, los cuales emulan los diferentes tipos de daltonismo.
-
-**Deuteranopia**: Dificultad para distinguir el color verde.
-
-**Protanopia**: Dificultad para distinguir el color rojo.
-
-**Tritanopia**: Dificultad para distinguir el color azul.
-
-**Acromatopsia**: Conversión de la imagen a escala de grises.
-
-##### Ejemplo de salida:
-![HCAP](https://github.com/user-attachments/assets/07111e9d-aa56-4c24-a78d-0d264861fa46)
-
-
-#### **7. Conclusion**
-
-Este programa es una herramienta la cual permite que podamos experimentar los diferentes puntos de vistas, que tiene las personas con algun de los daltonismos anteriormente señalas. Lo que puede ser empleado con fines educativos, como para el desarrollo de interfaces accesibles. Una de las cosas que tiene el programa es que su estructura es modular lo que permite que este en un futuro pueda añadir mas filtro o hacerle mantenimiento al codigo.
-
 # Documentación de Filtros de Daltonismo
 
 Este documento describe el funcionamiento y objetivo de los diferentes filtros aplicados para simular tipos de daltonismo y acromatopsia en una imagen. Estos filtros permiten visualizar cómo las personas con estas condiciones visuales perciben los colores.
@@ -160,14 +86,74 @@ El objetivo de aplicar estos filtros es generar conciencia sobre la percepción 
 
 ---
 
-## 🔄 Función genérica: `apply_color_filter`
+### **Manual de usuario**
 
-**Uso:** Todas las funciones anteriores utilizan esta función base para aplicar la matriz de conversión de color.
+#### **1. Descripción del programa**
 
-**Funcionamiento:**
-1. Convierte la imagen de BGR a RGB.
-2. Aplica la transformación matricial con la matriz correspondiente.
-3. Ajusta los valores para que estén en el rango [0, 255].
+Este programa está diseñado para diferenciar los distintos tipos de daltonismo, esto mediante el utilizamiento de las biblotecas de OpenCV, Numpy y Matplotlib. Los filtros van desde simular la forma en la que ve el Deuteranopia, Protanopia, Tritanopia y Acromatopsia.
+
+#### **2. Lenguaje de programación utilizado**
+
+Este programa está desarrollado en el lenguaje de **Python**.
+
+#### **3. Requisitos previos**
+
+Antes de ejecutar el programa, debe tener instalada la versión de Python 3 en su sistema. Puede descargar e instalar Python desde el siguiente enlace oficial:  
+[Python Oficial](https://www.python.org/downloads/)
+
+Para lograr ejecutar el codigo el usuario debe tener instaladas las biblotecas de OpenCV, Numpy y Matplotlib.
+
+Esto se logra abrien un panel de ternimal y ejecutando los siguientes comandos, en caso de que ya tenga las librerias instaladas en su python omita este paso.
+
+OpenCV
+```bash
+pip install opencv-python
+```
+
+Numpy
+```bash
+pip install numpy
+```
+
+Matplotlib
+```bash
+pip install matplotlib
+```
+
+una vez instalas la librerias, el codigo no deberia de dar un problema con ellas.
+
+#### **4. Archivos necesarios**
+
+- **Archivo de código fuente:** `main.py` (Este es el archivo que contiene el programa en Python).
+- **Archivo de entrada:** El usuario debe de la carpeta `images` donde se encuentra el archivo de  `image6.jpg.webp`, este sera la imagen a la que se le aplicaran los distintos filtros para simular los diferentes tipos de daltonismo.
+
+#### **5. Cómo ejecutar el programa**
+
+Para ejecutar el programa, siga estos pasos:
+
+1. Asegúrese de tener el archivo `image6.jpg.webp` en la carpeta de `images` debido a que el programa los buscara de esta forma.
+2. Asegúrese de que la carpeta `images` este dentro de la carpeta donde se encuetra el archivo `main.py`.
+3. Abra una terminal o línea de comandos en la carpeta donde esta el `main.py`.
+4. Ejecute el siguiente comando para correr el programa:
+
+```bash
+python main.py
+```
+
+#### **6. Qué esperar como salida**
+
+Cuando ejecute el programa, el script leerá el archivo `image6.jpg.webp`, y le aplicara los diferentes kernels, los cuales emulan los diferentes tipos de daltonismo.
+
+**Deuteranopia**: Dificultad para distinguir el color verde.
+
+**Protanopia**: Dificultad para distinguir el color rojo.
+
+**Tritanopia**: Dificultad para distinguir el color azul.
+
+**Acromatopsia**: Conversión de la imagen a escala de grises.
+
+##### Ejemplo de salida:
+![HCAP](https://github.com/user-attachments/assets/07111e9d-aa56-4c24-a78d-0d264861fa46)
 
 ---
 
@@ -182,5 +168,4 @@ El objetivo de aplicar estos filtros es generar conciencia sobre la percepción 
 
 ## 🏁 Conclusión
 
-Simular condiciones de daltonismo y acromatopsia es clave para comprender los retos visuales que enfrentan algunas personas. Usar estos filtros ayuda a crear contenido visual inclusivo, promoviendo la accesibilidad y el diseño universal.
-
+Este programa es una herramienta la cual permite que podamos experimentar los diferentes puntos de vistas, que tiene las personas con algun de los daltonismos anteriormente señalas. Lo que puede ser empleado con fines educativos, como para el desarrollo de interfaces accesibles. Una de las cosas que tiene el programa es que su estructura es modular lo que permite que este en un futuro pueda añadir mas filtro o hacerle mantenimiento al codigo.
