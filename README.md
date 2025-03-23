@@ -70,7 +70,7 @@ Cuando ejecute el programa, el script leerá el archivo `image6.jpg.webp`, y le 
 
 #### **7. Conclusion**
 
-Este programa es una herramienta la cual permite que podamos experimentar los diferentes puntos de vistas, que tiene las personas con algun de los daltonismos anteriormente señalas. Lo que puede ser empleado con fines educativos, como para el desarrollo de interfaces accesibles. Una de las cosas que tiene el programa es que su estructura es modular lo que permite que este en un futuro pueda añadir mas filtro o hacerle mantenimiento al codigo
+Este programa es una herramienta la cual permite que podamos experimentar los diferentes puntos de vistas, que tiene las personas con algun de los daltonismos anteriormente señalas. Lo que puede ser empleado con fines educativos, como para el desarrollo de interfaces accesibles. Una de las cosas que tiene el programa es que su estructura es modular lo que permite que este en un futuro pueda añadir mas filtro o hacerle mantenimiento al codigo.
 
 # Documentación de Filtros de Daltonismo
 
