@@ -169,3 +169,9 @@ Cuando ejecute el programa, el script leerá el archivo `image6.jpg.webp`, y le 
 ## 🏁 Conclusión
 
 Este programa es una herramienta la cual permite que podamos experimentar los diferentes puntos de vistas, que tiene las personas con algun de los daltonismos anteriormente señalas. Lo que puede ser empleado con fines educativos, como para el desarrollo de interfaces accesibles. Una de las cosas que tiene el programa es que su estructura es modular lo que permite que este en un futuro pueda añadir mas filtro o hacerle mantenimiento al codigo.
+
+## Referencias
+
+- Color Universal Design (CUD) / Colorblind Barrier free. (n.d.). https://jfly.uni-koeln.de/color/#pallet
+- Gisadminbeers. (2019, June 30). Mapas de diseño para daltónicos - Gis&Beers. Gis&Beers. https://www.gisandbeers.com/mapas-de-diseno-para-daltonicos/
+- Machado, G. M. (n.d.). A physiologically-based model for simulation of color vision deficiency. https://www.inf.ufrgs.br/~oliveira/pubs_files/CVD_Simulation/CVD_Simulation.html
